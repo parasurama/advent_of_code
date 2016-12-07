@@ -20,7 +20,7 @@ df['ids'] = df['name'].apply(lambda x: int(id_regex.search(x).group(0)))
 def most_common_letters(string):
     c = Counter(string)
     # get counts of elements
-    count_tuples = c.most_common(30)
+    count_tuples = c.most_common(26)
     # sort by count (reverse) and then by alphabetical order
     sorted_tuples = sorted(count_tuples, key=lambda x: (-x[1], x[0]))[:5]
     letters = ''.join([x[0] for x in sorted_tuples])
