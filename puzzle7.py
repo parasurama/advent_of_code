@@ -1,4 +1,3 @@
-import csv
 import re
 
 hypernet_regex = re.compile(r"\[([a-z]+)]")
