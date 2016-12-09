@@ -32,34 +32,3 @@ with open('puzzle_inputs/input7.txt') as f:
 
 tally = [supports_tls(x) for x in strings]
 print(tally.count(True))
-
-############################## PART 2 ###################################
-
-
-def find_aba(string):
-    # get 3grams of string
-    tri_grams = list(zip(*[string[i:] for i in range(3)]))
-    abas = []
-    for item in tri_grams:
-        if item[0] == item[2] != item[1]:
-            abas.append(item)
-    return abas
-
-
-def supports_ssl(string):
-    hypernets = hypernet_regex.findall(string)
-    supernets = [x[1] for x in seq_regex.findall(string)]
-    for sup in supernets:
-        for hyp in hypernets:
-            abas = find_aba(sup)
-            hyp_trigrams = zip(*[hyp[i:] for i in range(3)])
-            for item in abas:
-                for ht in hyp_trigrams:
-                    if item[0] == ht[1] and (item[1] == ht[0] == ht[2]):
-                        return True
-
-
-p2_tally = [supports_ssl(x) for x in strings]
-print(p2_tally.count(True))
-
-
